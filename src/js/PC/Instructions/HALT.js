@@ -60,10 +60,10 @@ export default class HALT {
 }
 
 const tacts = {
-  1: "Read instruction at the address from the PC to IR",
-  2: "Increase PC by 1 (Prepare to execute the next instruction)",
-  3: "Output first number on screen",
-  4: "Output second number on screen",
-  5: "Output third number on screen",
+  1: "Read the instruction at the PC address into the IR",
+  2: "Increase the PC by 1 (prepare for the next instruction)",
+  3: "Output the first number to the screen",
+  4: "Output the second number to the screen",
+  5: "Output the third number to the screen",
   6: "HALT",
 };

@@ -1,5 +1,5 @@
-@import "./variables.scss";
-@import "./general.scss";
+@use "variables.scss";
+@use "general.scss";
 
 .computer {
   display: flex;
@@ -9,55 +9,119 @@
 
 .table {
   border-collapse: collapse;
-  border: solid 4px $border;
+  border: solid 4px variables.$border;
   &__row {
     height: 35px;
   }
   &__header {
-    border: solid 4px $border;
+    border: solid 4px variables.$border;
     &:nth-child(2) {
-      color: $code;
+      color: variables.$code;
     }
     &:nth-child(3) {
-      color: $A1;
+      color: variables.$A1;
     }
     &:nth-child(4) {
-      color: $A2;
+      color: variables.$A2;
     }
     &:nth-child(5) {
-      color: $A3;
+      color: variables.$A3;
     }
   }
   &__sub-header {
-    border: solid 4px $border;
+    border: solid 4px variables.$border;
   }
   &__elem-adr {
     width: 100px;
     text-align: center;
-    border-right: solid 4px $border;
+    border-right: solid 4px variables.$border;
   }
   &__elem-mem {
     &:nth-child(4n) {
-      border-right: solid 4px $border;
+      border-right: solid 4px variables.$border;
     }
     &:nth-child(-n + 16) {
-      color: $A3;
+      color: variables.$A3;
     }
     &:nth-child(-n + 12) {
-      color: $A2;
+      color: variables.$A2;
     }
     &:nth-child(-n + 8) {
-      color: $A1;
+      color: variables.$A1;
     }
     &:nth-child(-n + 4) {
-      color: $code;
+      color: variables.$code;
     }
   }
   margin-bottom: 30px;
 }
 
+// fixed 3-row layout: Examples / Speed / Share|Clear
+.toolbar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 30px;
+  // don't let the toolbar widen its column: take the parent's width
+  width: 0;
+  min-width: 100%;
+
+  &__select {
+    grid-column: 1 / -1;
+    width: 100%;
+    min-width: 0;
+    font-family: inherit;
+    font-size: 12px;
+    padding: 10px 5px;
+    color: variables.$contrast;
+    background-color: #001219;
+    border: solid 2px variables.$border;
+    cursor: pointer;
+  }
+
+  &__btn {
+    font-family: inherit;
+    font-size: 12px;
+    padding: 10px;
+    color: #001219;
+    background-color: variables.$tag;
+    cursor: pointer;
+    &:hover {
+      background-color: variables.$text;
+    }
+    &:active {
+      transform: translateY(-1px);
+      box-shadow: 0 5px 10px rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  &__speed {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: variables.$tag;
+
+    .speed-slider {
+      flex: 1;
+      width: auto;
+      min-width: 0;
+      accent-color: variables.$tag;
+    }
+  }
+}
+
+// the under-table copy only shows when the Commands panel (which holds the
+// desktop copy) is hidden
+@media (min-width: 1201px) {
+  .toolbar--table {
+    display: none;
+  }
+}
+
 .info {
-  border: solid 4px $border;
+  border: solid 4px variables.$border;
   height: 630px;
   width: 320px;
   &__title {
@@ -68,7 +132,7 @@
     padding: 5px 10px;
   }
   &__mode {
-    border: solid 2px $border;
+    border: solid 2px variables.$border;
     padding: 10px;
   }
   &__elem {
@@ -77,15 +141,15 @@
   &__tag {
     display: inline-block;
     margin-bottom: 5px;
-    color: $tag;
+    color: variables.$tag;
   }
   &__val {
-    color: $value;
+    color: variables.$value;
   }
   &__val--block {
     display: block;
     text-align: center;
-    color: $value;
+    color: variables.$value;
   }
   &__table {
     width: 280px;
@@ -94,7 +158,7 @@
     height: 40px;
   }
   &__head-col {
-    color: $contrast;
+    color: variables.$contrast;
   }
   &__status {
     margin-top: 30px;
@@ -106,19 +170,19 @@
   &__row {
     height: 25px;
     &:nth-child(1) {
-      color: $A1;
+      color: variables.$A1;
     }
     &:nth-child(2) {
-      color: $A2;
+      color: variables.$A2;
     }
     &:nth-child(3) {
-      color: $A3;
+      color: variables.$A3;
     }
   }
   &__col {
     width: 180px;
     &:nth-child(2) {
-      color: $value;
+      color: variables.$value;
     }
   }
   &__buttons {
@@ -128,21 +192,21 @@
   &__btn {
     padding: 20px 8px;
     &:hover {
-      background-color: $tag !important;
-      color: $border;
+      background-color: variables.$tag !important;
+      color: variables.$border;
     }
     &:active {
       transform: translateY(-1px);
       box-shadow: 0 5px 10px rgba(255, 255, 255, 0.2);
     }
     &.btn-auto {
-      background-color: $A3;
+      background-color: variables.$A3;
     }
     &.btn-step {
-      background-color: $A2;
+      background-color: variables.$A2;
     }
     &.btn-tact {
-      background-color: $A1;
+      background-color: variables.$A1;
     }
   }
 }
@@ -151,7 +215,7 @@
   display: none;
   width: 456px;
   &__inner {
-    border: solid 4px $border;
+    border: solid 4px variables.$border;
     padding: 10px;
     margin-bottom: 30px;
   }
@@ -163,7 +227,7 @@
 .commands {
   &__inner {
     padding: 10px;
-    border: solid 4px $border;
+    border: solid 4px variables.$border;
     height: 607px;
     display: inline-block;
   }
@@ -174,7 +238,7 @@
     text-align: center;
   }
   &__list {
-    color: $text;
+    color: variables.$text;
   }
   &__elem {
     margin-bottom: 5px;
@@ -184,7 +248,7 @@
 .alu {
   &__inner {
     padding: 10px 20px;
-    border: 4px solid $border;
+    border: 4px solid variables.$border;
   }
   &__title {
     margin: 0;
@@ -195,22 +259,22 @@
     margin-bottom: 10px;
   }
   &__tag {
-    color: $tag;
+    color: variables.$tag;
   }
   &__code {
-    color: $code;
+    color: variables.$code;
   }
   &__a1 {
-    color: $A1;
+    color: variables.$A1;
   }
   &__a2 {
-    color: $A2;
+    color: variables.$A2;
   }
   &__a3 {
-    color: $A3;
+    color: variables.$A3;
   }
   &__def {
-    color: $value;
+    color: variables.$value;
   }
 }
 
@@ -221,7 +285,7 @@
 .active-adr {
   font-weight: bold;
   color: #001219;
-  background-color: $contrast;
+  background-color: variables.$contrast;
 }
 
 .alu__tag + .alu__tag {

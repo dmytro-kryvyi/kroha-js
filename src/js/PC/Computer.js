@@ -19,35 +19,77 @@ export default class Computer {
     this.screen = Screen.getInstance();
     this.instruction = null;
     this.isHalted = false;
+    this.autoTimer = null;
+    this.delay = 250;
   }
 
   getControl() {
     return this.control;
   }
 
+  setSpeed(delay) {
+    this.delay = delay;
+  }
+
+  stopAuto() {
+    if (this.autoTimer) {
+      clearTimeout(this.autoTimer);
+      this.autoTimer = null;
+    }
+  }
+
+  // Pressing Auto while running pauses; delay 0 runs instantly like the
+  // original program
   auto() {
-    let flag = 0;
+    if (this.autoTimer) {
+      this.stopAuto();
+      this.info.setStatusContent("Paused");
+      return;
+    }
 
     if (this.isHalted) {
       this.reset();
       return;
     }
 
-    while (!this.isHalted) {
-      if (flag < 5000) {
-        this.executeInstruction();
-        flag++;
-      } else {
-        this.reset();
-        this.info.setStatusContent("ERROR Infinite loop");
-        break;
+    this.info.setModeContent("Auto");
+
+    if (this.delay === 0) {
+      let flag = 0;
+      while (!this.isHalted) {
+        if (flag < 5000) {
+          this.executeInstruction();
+          flag++;
+        } else {
+          this.reset();
+          this.info.setStatusContent("ERROR Infinite loop");
+          break;
+        }
       }
+      return;
     }
 
-    this.info.setModeContent("Auto");
+    let flag = 0;
+    const tick = () => {
+      this.executeInstruction();
+      flag++;
+
+      if (this.isHalted) {
+        this.autoTimer = null;
+      } else if (flag >= 5000) {
+        this.autoTimer = null;
+        this.reset();
+        this.info.setStatusContent("ERROR Infinite loop");
+      } else {
+        this.autoTimer = setTimeout(tick, this.delay);
+      }
+    };
+
+    this.autoTimer = setTimeout(tick, this.delay);
   }
 
   step() {
+    this.stopAuto();
     this.info.setModeContent("Step");
     if (this.isHalted) {
       this.reset();
@@ -58,6 +100,7 @@ export default class Computer {
   }
 
   tact() {
+    this.stopAuto();
     this.info.setModeContent("Tact");
     if (this.isHalted) {
       this.reset();
@@ -101,6 +144,7 @@ export default class Computer {
   }
 
   reset() {
+    this.stopAuto();
     this.instruction = null;
     this.isHalted = false;
     this.info.setModeContent("Editor");

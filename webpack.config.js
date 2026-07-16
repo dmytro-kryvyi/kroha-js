@@ -5,7 +5,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 const isDev = process.env.NODE_ENV === "development";
-const filename = (ext) => (isDev ? `[name].${ext}` : `[name].[hash].${ext}`);
+const filename = (ext) =>
+  isDev ? `[name].${ext}` : `[name].[contenthash].${ext}`;
 
 console.log("IS DEV:", isDev);
 
@@ -21,9 +22,9 @@ let multipleHtmlPlugins = htmlPageNames.map((name) => {
 module.exports = {
   context: path.resolve(__dirname, "src"),
   entry: {
-    main: ["./js/index.js", "/js/burger.js"],
-    info: ["./js/about.js", "/js/burger.js"],
-    instruction: ["./js/instruction.js", "/js/burger.js"],
+    main: ["./js/index.js", "./js/burger.js"],
+    info: ["./js/about.js", "./js/burger.js"],
+    instruction: ["./js/instruction.js", "./js/burger.js"],
   },
   output: {
     filename: filename("js"),
@@ -35,7 +36,6 @@ module.exports = {
     liveReload: true,
     watchFiles: [path.join(__dirname, "src/**/*")],
   },
-  cache: false,
   plugins: [
     new HTMLWebpackPlugin({
       filename: "index.html",

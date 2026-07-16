@@ -1,5 +1,7 @@
+@use "variables";
+@use "normalize.css";
+
 @import url("https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap");
-@import "~normalize.css";
 
 html {
   box-sizing: border-box;
@@ -13,7 +15,7 @@ html {
 body {
   font-family: "Press Start 2P", monospace;
   background-color: #001219;
-  color: $contrast;
+  color: variables.$contrast;
 }
 
 input {
@@ -23,7 +25,7 @@ input {
   text-align: center;
   color: inherit;
   padding: 0;
-  caret-color: $tag;
+  caret-color: variables.$tag;
   &:focus {
     outline: none;
   }
@@ -62,7 +64,7 @@ button {
     &-elem {
       transition: all 0.5s;
       &:hover {
-        color: $text;
+        color: variables.$text;
       }
     }
   }
@@ -70,12 +72,12 @@ button {
 
 .logo {
   font-size: 26px;
-  color: $A1;
+  color: variables.$A1;
   &-higl {
     padding: 5px 0 5px 5px;
     margin-right: 5px;
     color: #001219;
-    background-color: $A1;
+    background-color: variables.$A1;
   }
 }
 
@@ -182,7 +184,7 @@ button {
     width: 100%;
     transition: all 0.3s ease-in-out;
     &-list {
-      background-color: $A1;
+      background-color: variables.$A1;
       color: #001219;
       font-weight: bold;
       margin-top: 240px;

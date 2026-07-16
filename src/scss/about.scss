@@ -1,5 +1,5 @@
-@import "./variables.scss";
-@import "./general.scss";
+@use "variables.scss";
+@use "general.scss";
 
 .about {
   &__title {
@@ -7,7 +7,7 @@
   }
   &__article {
     font-family: sans-serif;
-    color: $text;
+    color: variables.$text;
     font-size: 28px;
     text-align: justify;
   }

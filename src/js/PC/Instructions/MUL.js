@@ -16,7 +16,9 @@ export default class MUL {
 
   execute() {
     for (let i = 1; i < 6; i++) {
-      this.executeStep(i);
+      if (this.executeStep() === -1) {
+        return -1;
+      }
     }
   }
 
@@ -37,7 +39,12 @@ export default class MUL {
         let newAC = this.alu.getAC().getValueDec();
         newAC *= this.ram.getByAddr(this.alu.getIR().getA2Bin()).getValueDec();
 
-        this.alu.getAC().setValueDec(Math.trunc(newAC));
+        if (newAC > MAX_VALUE) {
+          this.info.setStatusContent("ERROR Overflow");
+          return -1;
+        }
+
+        this.alu.getAC().setValueDec(newAC);
         break;
       case 5:
         const cell = this.ram.getByAddr(this.alu.getIR().getA3Bin());
@@ -53,10 +60,12 @@ export default class MUL {
   }
 }
 
+const MAX_VALUE = 2 ** 15 - 1;
+
 const tacts = {
-  1: "Read instruction at the address from the PC to IR",
-  2: "Increase PC by 1 (Prepare to execute the next instruction)",
-  3: "Number for the address A1 into AC",
-  4: "Write AC * number in cell for the address A2 into AC",
-  5: "Write from the AC into cell for address A3",
+  1: "Read the instruction at the PC address into the IR",
+  2: "Increase the PC by 1 (prepare for the next instruction)",
+  3: "Load the value at address A1 into the AC",
+  4: "Multiply the AC by the value at address A2",
+  5: "Write the AC to the cell at address A3",
 };

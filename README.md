@@ -1,44 +1,61 @@
 # KrohaJS
-## _The first generation computer emulator_
+## _A first-generation computer emulator_
 
-CISC - complex instruction set computing
+## About
+KROHA.JS is an emulator of a first-generation von Neumann machine with a CISC (complex instruction set) architecture. It is based on "Krokha", a real educational DOS program from 1995, with the amount of RAM increased to 16 cells.
 
-## Info
-KROHA.JS is an emulator of the Neumann machine (computer) of the first generation with CISC architecture. It support 8 instructions:
+Working with it feels like working with a first-generation computer: data and results are in binary, memory and registers are scarce, and there is no operating system.
+
+> The computer does not distinguish between data and instructions — the programmer decides what each cell means.
 
 ## Interface
+The emulator has five panels:
 
-KROHA.JS is an emulator of the Neumann machine (computer) of the first generation with CISC architecture.
+- **Memory (RAM)** — the main window; move the cursor here and enter your program bit by bit.
+- **Info** — the current memory cell and the state of the computer.
+- **Commands** — a quick reference of instruction codes and hotkeys, plus the Program toolbar.
+- **ALU** — the state of the instruction register (IR), the accumulator (AC), and the program counter (PC).
+- **Screen** — the cells output by the HALT instruction.
 
-The computer have 5 windows:
+## Program toolbar
+- **Examples...** — loads a demo program (add two numbers, greater of two, multiply via loop, Fibonacci).
+- **Speed** — how fast Auto mode executes; the rightmost position runs instantly.
+- **Share** — copies a link with the current program encoded in the URL, so you can send it to someone else.
+- **Clear** — resets all memory cells to zero.
 
-- The main window with memory in which the cursor is moved and data is entered.
-- Information window that shows information about the current memory cell and the state of the computer.
-- A help window with a brief description of the instruction and its code and hotkeys.
-- Arithmetic logic unit (ALU) that shows the state of the instruction register (IR), the accumulator (AC) and the program counter (PC).
-- Screen on which the specified cells are output
-
->The computer does not distinguish between data and instructions, the user (programmer) determines this
+The program in memory is saved to the browser's localStorage on every edit and restored on your next visit.
 
 ## Modes
-The computer can work in 3 modes - automatic(auto), clock-by-clock(tact) and step-by-step(step).In automatic mode, the computer executes instructions until it encounters the HALT stop instruction. In Step mode, the computer executes 1 instruction at a time. In Tact mode, each instruction is executed clock by clock and displays what is happening on the information window
+The computer runs in three modes:
+
+- **Auto (A)** — executes instructions one after another until it reaches HALT. The Speed slider sets the pace; pressing Auto again pauses and resumes. Runaway programs are stopped after 5000 instructions with an "ERROR Infinite loop" message.
+- **Step (S)** — executes one instruction per key press.
+- **Tact (T)** — executes one clock cycle per key press and explains in the Info window what is happening.
+
+Editing memory (0, 1, Backspace) or pressing E returns the computer to Editor mode and resets execution.
 
 ## Instructions
 | Name | Code | Legend | Description |
 | ------ | ------ | ------ | ------ |
-| (LW) | 000 | A1 ==> A3 | Load Value into cell for address in A3|
-| (ADD) | 001 | A1 + A2 ==> A3 | Add value in cell for address A1 to value in cell for address A2, result into A3|
-| (DIV) | 010 | A1 / A2 ==> A3 | Divide value in cell for address A1 by value in cell for address A2, result into A3|
-| (SUB) | 011 | /A1 - A2/ ==> A3 | Subtract from value in cell for address A1 value in cell for address A2, result into A3|
-| (JEQ) | 100 | if A1 == A2 goto A3 | Jump to execution instruction by address A3 if values in cells by addresses A1 and A2 are equal|
-| (MUL) | 101 | A1 * A2 ==> A3 | Multiply value in cell for address A1 on value in cell for address A2, result into A3|
-| (JG) | 110 | if A1 > A2 goto A3 | Jump to execution instruction by address A3 if value in cell by address A1 greater than value in cell by address A2 |
-| (HALT) | 111 | STOP, OUTPUT | Stop the execution of commands. Output values in cells by addresses A1, A2, A3 on screen|
+| LW | 000 | A1 ==> A3 | Copy the value from the cell at address A1 to the cell at address A3 (A2 is unused) |
+| ADD | 001 | A1 + A2 ==> A3 | Add the value at address A1 to the value at address A2; store the result at A3 |
+| DIV | 010 | A1 / A2 ==> A3 | Divide the value at address A1 by the value at address A2; store the result at A3 (the fraction is discarded) |
+| SUB | 011 | \|A1 - A2\| ==> A3 | Subtract the value at address A2 from the value at address A1; store the absolute value at A3 |
+| JEQ | 100 | if A1 = A2 goto A3 | Jump to the instruction at address A3 if the values at A1 and A2 are equal |
+| MUL | 101 | A1 * A2 ==> A3 | Multiply the value at address A1 by the value at address A2; store the result at A3 |
+| JG | 110 | if A1 > A2 goto A3 | Jump to the instruction at address A3 if the value at A1 is greater than the value at A2 |
+| HALT | 111 | STOP, OUTPUT | Stop execution and output the values at addresses A1, A2, A3 on the Screen |
 
->Negative values doesn't support. So you will get absolute value, sign will be omitted
+> Cell values are 15-bit and unsigned (0–32767). Subtraction always stores the absolute value. Addition or multiplication overflow and division by zero stop the machine with an error message.
 
-## Recap
-The original "Krokha" is a DOS program that is run in a DOS window. The only way to run the original program on a modern computer is to use a DOS emulator or a virtual machine. It is not convenient and in the process many problems related to the age of the software arise.
+## Why KROHA.JS
+The original "Krokha" is a DOS program, so the only way to run it on a modern computer is a DOS emulator or a virtual machine — inconvenient, and the age of the software causes plenty of problems along the way. KROHA.JS brings it to the browser. It was written for educational purposes while learning JavaScript.
 
- KROHA.JS was written for educational purposes for learning JavaScript. It is based on a real program from 1995. In which the number of RAM cells was increased to 16
+## Development
+```bash
+npm install
+npm run serve   # dev server on http://localhost:4200
+npm run build   # production build in dist/
+```
 
+Pushes to `main` are deployed to GitHub Pages by the workflow in `.github/workflows/deploy.yml`.

@@ -16,7 +16,7 @@ export default class RAM {
   }
 
   initValues() {
-    this.inputs = document.getElementsByTagName("input");
+    this.inputs = document.querySelectorAll(".table input");
     this.initRAM();
   }
 

@@ -16,7 +16,7 @@ export default class Control {
 
   initValues() {
     this.focus = 0;
-    this.inputs = document.getElementsByTagName("input");
+    this.inputs = document.querySelectorAll(".table input");
     this.addresses = document.querySelectorAll(".table__elem-adr");
     this.info = Info.getInstance();
     this.setFocus();

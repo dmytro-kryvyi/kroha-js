@@ -62,10 +62,10 @@ export default class JG {
 }
 
 const tacts = {
-  1: "Read instruction at the address from the PC to IR",
-  2: "Increase PC by 1 (Prepare to execute the next instruction)",
-  3: "Number for the address A1 into AC",
-  4: "Compare AC with value in cell by address A3",
-  5: "Condition is not fulfilled, transition does not occur",
-  6: "Condition complete, perform transition",
+  1: "Read the instruction at the PC address into the IR",
+  2: "Increase the PC by 1 (prepare for the next instruction)",
+  3: "Load the value at address A1 into the AC",
+  4: "Compare the AC with the value at address A2",
+  5: "Condition not met — no jump",
+  6: "Condition met — jump to the address in A3",
 };

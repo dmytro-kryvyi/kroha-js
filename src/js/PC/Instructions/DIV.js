@@ -16,7 +16,9 @@ export default class DIV {
 
   execute() {
     for (let i = 1; i < 6; i++) {
-      this.executeStep(i);
+      if (this.executeStep() === -1) {
+        return -1;
+      }
     }
   }
 
@@ -34,9 +36,16 @@ export default class DIV {
         this.alu.initAC();
         break;
       case 4:
-        let newAC = this.alu.getAC().getValueDec();
-        newAC /= this.ram.getByAddr(this.alu.getIR().getA2Bin()).getValueDec();
+        const divisor = this.ram
+          .getByAddr(this.alu.getIR().getA2Bin())
+          .getValueDec();
 
+        if (divisor === 0) {
+          this.info.setStatusContent("ERROR Division by zero");
+          return -1;
+        }
+
+        const newAC = Math.trunc(this.alu.getAC().getValueDec() / divisor);
         this.alu.getAC().setValueDec(newAC);
         break;
       case 5:
@@ -54,9 +63,9 @@ export default class DIV {
 }
 
 const tacts = {
-  1: "Read instruction at the address from the PC to IR",
-  2: "Increase PC by 1 (Prepare to execute the next instruction)",
-  3: "Number for the address A1 into AC",
-  4: "Write AC / number in cell for the address A2 into AC",
-  5: "Write from the AC into cell for address A3",
+  1: "Read the instruction at the PC address into the IR",
+  2: "Increase the PC by 1 (prepare for the next instruction)",
+  3: "Load the value at address A1 into the AC",
+  4: "Divide the AC by the value at address A2",
+  5: "Write the AC to the cell at address A3",
 };

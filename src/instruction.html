@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>KROHA.JS — Manual</title>
   </head>
   <body>
     <header class="header">
@@ -40,7 +40,7 @@
 
     <section class="instruction">
       <div class="container">
-        <h2 class="instruction__title">Instruction</h2>
+        <h2 class="instruction__title">Manual</h2>
 
         <div class="accordion">
           <button class="accordion__btn">
@@ -48,67 +48,67 @@
           </button>
           <div class="accordion__panel">
             <p class="accordion__article">
-              KROHA.JS is an emulator of the Neumann machine (computer) of the
-              first generation with CISC architecture.
+              KROHA.JS is an emulator of a first-generation von Neumann
+              machine (computer) with a CISC architecture.
             </p>
 
             <p class="accordion__article no-margin">
-              The computer have 5 windows:
+              The computer has 5 panels:
             </p>
 
             <p class="accordion__article-sub">
-              The main window with memory in which the cursor is moved and data
-              is entered.
+              The main window with memory, where you move the cursor and enter
+              data.
             </p>
 
             <p class="accordion__article-sub no-margin">
-              Information window that shows information about the current memory
-              cell and the state of the computer. In particular, such fields as
+              An information window that shows the current memory cell and the
+              state of the computer, with the following fields:
             </p>
             <ul class="accordion__list-sub blue">
               <li class="accordion__elem">
-                Mode - Show the current mode of computer
+                Mode - the current mode of the computer
               </li>
 
               <li class="accordion__elem">
-                Cell - Show the memory cell in which the cursor is located
+                Cell - the memory cell the cursor is in
               </li>
 
               <li class="accordion__elem">
-                Decimal - Show the decimal value of the memory cell in which
-                cursor is located
+                Decimal - the decimal value of the memory cell the cursor is in
               </li>
 
               <li class="accordion__elem">
-                Instruction - Show which instruction is written in cell where
-                cursor is located
+                Instruction - the instruction written in the cell the cursor
+                is in
               </li>
 
               <li class="accordion__elem">
-                Operand Value - Show values of the address fields of cells A1,
-                A2, A3 (Operand) and decimal values located at these addresses
+                Operand Value - the address fields A1, A2, A3 of the cell
+                (Operand) and the decimal values stored at those addresses
                 (Value)
               </li>
             </ul>
 
             <p class="accordion__article-sub">
-              A help window with a brief description of the instruction and its
-              code and hotkeys.
+              A reference panel with a short description of each instruction
+              and its code, the hotkeys, and the Program toolbar.
             </p>
 
             <p class="accordion__article-sub">
-              Arithmetic logic unit (ALU) that shows the state of the
+              The arithmetic logic unit (ALU), which shows the state of the
               instruction register (IR), the accumulator (AC) and the program
               counter (PC).
             </p>
 
             <p class="accordion__article-sub">
-              Screen on which the specified cells are output
+              The Screen, where the HALT instruction outputs the selected
+              cells.
             </p>
 
             <p class="accordion__article info-message">
-              The computer does not distinguish between data and instructions,
-              the user (programmer) determines this
+              The computer does not distinguish between data and instructions —
+              the user (programmer) decides what each cell means
             </p>
           </div>
         </div>
@@ -119,14 +119,51 @@
           </button>
           <div class="accordion__panel">
             <p class="accordion__article">
-              You can use the arrow keys on the keyboard to move the cursor
-              through the memory cells. The numbers 0 and 1 set the
-              corresponding values. The backspace button set the value to 0.
+              Use the arrow keys to move the cursor through the memory cells.
+              The 0 and 1 keys write the corresponding bit; Backspace writes
+              a 0.
             </p>
 
             <p class="accordion__article">
-              On the mobile version, you can use the numbers 2(up), 4(left),
-              6(right), 8(down) to move the cursor.
+              The 2 (up), 4 (left), 6 (right) and 8 (down) keys also move the
+              cursor — convenient on a numeric keypad or a mobile keyboard.
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <button class="accordion__btn">
+            <p class="accordion__title">Program toolbar</p>
+          </button>
+          <div class="accordion__panel">
+            <p class="accordion__article">
+              On large screens the toolbar is in the Commands panel; on small
+              screens it sits under the memory table.
+            </p>
+
+            <ul class="accordion__list blue">
+              <li class="accordion__elem">
+                Examples... - loads a ready-made demo program into memory
+              </li>
+
+              <li class="accordion__elem">
+                Speed - how fast Auto mode executes; the rightmost position
+                runs instantly
+              </li>
+
+              <li class="accordion__elem">
+                Share - copies a link with the current program encoded in the
+                URL, so you can send it to someone else
+              </li>
+
+              <li class="accordion__elem">
+                Clear - resets all memory cells to zero
+              </li>
+            </ul>
+
+            <p class="accordion__article info-message">
+              The program in memory is saved in your browser on every edit and
+              restored on your next visit
             </p>
           </div>
         </div>
@@ -137,12 +174,14 @@
           </button>
           <div class="accordion__panel">
             <p class="accordion__article">
-              The computer can work in 3 modes - automatic(auto),
-              clock-by-clock(tact) and step-by-step(step).In automatic mode, the
-              computer executes instructions until it encounters the HALT stop
-              instruction. In Step mode, the computer executes 1 instruction at
-              a time. In Tact mode, each instruction is executed clock by clock
-              and displays what is happening on the information window
+              The computer works in 3 modes: automatic (Auto), step-by-step
+              (Step) and clock-by-clock (Tact). In Auto mode the computer
+              executes instructions one after another until it reaches the
+              HALT instruction; the Speed slider sets the pace, and pressing
+              Auto again pauses and resumes execution. In Step mode the
+              computer executes one instruction at a time. In Tact mode each
+              instruction is executed clock by clock, and the information
+              window explains what is happening
             </p>
 
             <p class="accordion__article no-margin">
@@ -155,24 +194,27 @@
             </ul>
 
             <p class="accordion__article">
-              When editing the memory window (using the 0, 1, Backspace keys) or
-              pressing the E key to switch to the editor mode, the computer
-              state will be reset and execution will be stopped
+              Editing memory (with the 0, 1 or Backspace keys) or pressing E
+              switches the computer back to editor mode: the state is reset
+              and execution stops
             </p>
 
             <p class="accordion__article">
-              On the mobile version, you can use 3 keys on the page to start the
+              On mobile, use the three buttons on the page to start the
               corresponding mode
             </p>
 
             <p class="accordion__article info-message">
-              If you get message HALT on info window you can press any key(A, S,
-              T) to reset the state of machine(ALU and screen). Execution will
-              not start, only resetting of values
+              After a HALT message (or an error such as "ERROR Overflow",
+              "ERROR Division by zero" or "ERROR Infinite loop"), press any
+              run key (A, S, T) to reset the machine (ALU and screen).
+              Execution will not start — only the values are reset
             </p>
 
-            <p class="accordion__article warning">
-              Please use the Latin layout. The program is not case sensitive
+            <p class="accordion__article info-message">
+              Hotkeys work in any keyboard layout — on non-Latin layouts the
+              physical position of the A, S, T and E keys is used. Keys are
+              not case sensitive
             </p>
           </div>
         </div>
@@ -183,15 +225,15 @@
           </button>
           <div class="accordion__panel">
             <p class="accordion__article no-margin">
-              KROHA.JS support 8 instructions:
+              KROHA.JS supports 8 instructions:
             </p>
 
             <div class="accordion">
               <button class="accordion__btn">(LW) &nbsp000 A1 ==> A3</button>
               <div class="accordion__panel">
                 <p class="accordion__article">
-                  Loads value from cell by address in A1 to cell by address A3.
-                  A2 is unused
+                  Copies the value from the cell at address A1 to the cell at
+                  address A3. A2 is unused
                 </p>
 
                 <p class="accordion__article no-margin">
@@ -200,20 +242,20 @@
 
                 <ul class="accordion__list blue">
                   <li class="accordion__elem">
-                    Step 1: Read instruction at the address from the PC to IR
+                    Step 1: Read the instruction at the PC address into the IR
                   </li>
 
                   <li class="accordion__elem">
-                    Step 2: Increase PC by 1 (Prepare to execute the next
-                    instruction),
+                    Step 2: Increase the PC by 1 (prepare for the next
+                    instruction)
                   </li>
 
                   <li class="accordion__elem">
-                    Step 3: Number for the address A1 into AC
+                    Step 3: Load the value at address A1 into the AC
                   </li>
 
                   <li class="accordion__elem">
-                    Step 4: Write from the AC into cell for address A3
+                    Step 4: Write the AC to the cell at address A3
                   </li>
                 </ul>
               </div>
@@ -223,8 +265,14 @@
               <button class="accordion__btn">(ADD) 001 A1 + A2 ==> A3</button>
               <div class="accordion__panel">
                 <p class="accordion__article">
-                  Add value is cell by address A1 to value in cell by address in
-                  A2 and write it to the cell by address A3
+                  Adds the value in the cell at address A1 to the value in the
+                  cell at address A2 and writes the result to the cell at
+                  address A3
+                </p>
+
+                <p class="accordion__title warning">
+                  If the result is greater than 32767 (15 bits), the machine
+                  stops with an "ERROR Overflow" message
                 </p>
 
                 <p class="accordion__article no-margin">
@@ -232,24 +280,24 @@
                 </p>
                 <ul class="accordion__list blue">
                   <li class="accordion__elem">
-                    Step 1: Read instruction at the address from the PC to IR
+                    Step 1: Read the instruction at the PC address into the IR
                   </li>
 
                   <li class="accordion__elem">
-                    Step 2: Increase PC by 1 (Prepare to execute the next
-                    instruction),
+                    Step 2: Increase the PC by 1 (prepare for the next
+                    instruction)
                   </li>
 
                   <li class="accordion__elem">
-                    Step 3: Number for the address A1 into AC
+                    Step 3: Load the value at address A1 into the AC
                   </li>
 
                   <li class="accordion__elem">
-                    Step 4: Write AC + number in cell for the address A2 into AC
+                    Step 4: Add the value at address A2 to the AC
                   </li>
 
                   <li class="accordion__elem">
-                    Step 5: Write from the AC into cell for address A3
+                    Step 5: Write the AC to the cell at address A3
                   </li>
                 </ul>
               </div>
@@ -259,12 +307,14 @@
               <button class="accordion__btn">(DIV) 010 A1 / A2 ==> A3</button>
               <div class="accordion__panel">
                 <p class="accordion__article">
-                  Divide value is cell by address A1 to value in cell by address
-                  in A2 and write it to the cell by address A3
+                  Divides the value in the cell at address A1 by the value in
+                  the cell at address A2 and writes the result to the cell at
+                  address A3
                 </p>
 
                 <p class="accordion__title warning">
-                  A fraction will be discarded
+                  The fractional part is discarded. Division by zero stops the
+                  machine with an "ERROR Division by zero" message
                 </p>
 
                 <p class="accordion__article no-margin">
@@ -272,24 +322,24 @@
                 </p>
                 <ul class="accordion__list blue">
                   <li class="accordion__elem">
-                    Step 1: Read instruction at the address from the PC to IR
+                    Step 1: Read the instruction at the PC address into the IR
                   </li>
 
                   <li class="accordion__elem">
-                    Step 2: Increase PC by 1 (Prepare to execute the next
-                    instruction),
+                    Step 2: Increase the PC by 1 (prepare for the next
+                    instruction)
                   </li>
 
                   <li class="accordion__elem">
-                    Step 3: Number for the address A1 into AC
+                    Step 3: Load the value at address A1 into the AC
                   </li>
 
                   <li class="accordion__elem">
-                    Step 4: Write AC / number in cell for the address A2 into AC
+                    Step 4: Divide the AC by the value at address A2
                   </li>
 
                   <li class="accordion__elem">
-                    Step 5: Write from the AC into cell for address A3
+                    Step 5: Write the AC to the cell at address A3
                   </li>
                 </ul>
               </div>
@@ -299,13 +349,14 @@
               <button class="accordion__btn">(SUB) 011 |A1-A2| ==> A3</button>
               <div class="accordion__panel">
                 <p class="accordion__article">
-                  Subtract from value is cell by address A1 value in cell by
-                  address in A2 and write it to the cell by address A3
+                  Subtracts the value in the cell at address A2 from the value
+                  in the cell at address A1 and writes the result to the cell
+                  at address A3
                 </p>
 
                 <p class="accordion__title warning">
-                  Negative values doesn't support. So you will get absolute
-                  value, sight will be omitted
+                  Negative values are not supported: the result is the
+                  absolute value, the sign is discarded
                 </p>
 
                 <p class="accordion__article no-margin">
@@ -313,24 +364,24 @@
                 </p>
                 <ul class="accordion__list blue">
                   <li class="accordion__elem">
-                    Step 1: Read instruction at the address from the PC to IR
+                    Step 1: Read the instruction at the PC address into the IR
                   </li>
 
                   <li class="accordion__elem">
-                    Step 2: Increase PC by 1 (Prepare to execute the next
-                    instruction),
+                    Step 2: Increase the PC by 1 (prepare for the next
+                    instruction)
                   </li>
 
                   <li class="accordion__elem">
-                    Step 3: Number for the address A1 into AC
+                    Step 3: Load the value at address A1 into the AC
                   </li>
 
                   <li class="accordion__elem">
-                    Step 4: Write AC - number in cell for the address A2 into AC
+                    Step 4: Subtract the value at address A2 from the AC
                   </li>
 
                   <li class="accordion__elem">
-                    Step 5: Write from the AC into cell for address A3
+                    Step 5: Write the AC to the cell at address A3
                   </li>
                 </ul>
               </div>
@@ -342,8 +393,8 @@
               </button>
               <div class="accordion__panel">
                 <p class="accordion__article">
-                  Jump to execution instruction by address A3 if values in cells
-                  by addresses A1 and A2 are equal
+                  Jumps to the instruction at address A3 if the values in the
+                  cells at addresses A1 and A2 are equal
                 </p>
 
                 <p class="accordion__article no-margin">
@@ -351,30 +402,30 @@
                 </p>
                 <ul class="accordion__list blue">
                   <li class="accordion__elem">
-                    Step 1: Read instruction at the address from the PC to IR
+                    Step 1: Read the instruction at the PC address into the IR
                   </li>
 
                   <li class="accordion__elem">
-                    Step 2: Increase PC by 1 (Prepare to execute the next
-                    instruction),
+                    Step 2: Increase the PC by 1 (prepare for the next
+                    instruction)
                   </li>
 
                   <li class="accordion__elem">
-                    Step 3: Number for the address A1 into AC
+                    Step 3: Load the value at address A1 into the AC
                   </li>
 
                   <li class="accordion__elem">
-                    Step 4: Write AC - number in cell for the address A2 into AC
+                    Step 4: Compare the AC with the value at address A2
                   </li>
 
                   <li class="accordion__elem">
-                    Step 5: (If condition is true) Condition complete, perform
-                    transition
+                    Step 5: (if the condition is true) Condition met — jump to
+                    the address in A3
                   </li>
 
                   <li class="accordion__elem">
-                    Step 5: (If condition is not true) Condition is not
-                    fulfilled, transition does not occur
+                    Step 5: (if the condition is false) Condition not met — no
+                    jump
                   </li>
                 </ul>
               </div>
@@ -384,8 +435,14 @@
               <button class="accordion__btn">(MUL) 101 A1 * A2 ==> A3</button>
               <div class="accordion__panel">
                 <p class="accordion__article">
-                  Multiply value is cell by address A1 on value in cell by
-                  address in A2 and write it to the cell by address A3
+                  Multiplies the value in the cell at address A1 by the value
+                  in the cell at address A2 and writes the result to the cell
+                  at address A3
+                </p>
+
+                <p class="accordion__title warning">
+                  If the result is greater than 32767 (15 bits), the machine
+                  stops with an "ERROR Overflow" message
                 </p>
 
                 <p class="accordion__article no-margin">
@@ -393,24 +450,24 @@
                 </p>
                 <ul class="accordion__list blue">
                   <li class="accordion__elem">
-                    Step 1: Read instruction at the address from the PC to IR
+                    Step 1: Read the instruction at the PC address into the IR
                   </li>
 
                   <li class="accordion__elem">
-                    Step 2: Increase PC by 1 (Prepare to execute the next
-                    instruction),
+                    Step 2: Increase the PC by 1 (prepare for the next
+                    instruction)
                   </li>
 
                   <li class="accordion__elem">
-                    Step 3: Number for the address A1 into AC
+                    Step 3: Load the value at address A1 into the AC
                   </li>
 
                   <li class="accordion__elem">
-                    Step 4: Write AC * number in cell for the address A2 into AC
+                    Step 4: Multiply the AC by the value at address A2
                   </li>
 
                   <li class="accordion__elem">
-                    Step 5: Write from the AC into cell for address A3
+                    Step 5: Write the AC to the cell at address A3
                   </li>
                 </ul>
               </div>
@@ -422,8 +479,9 @@
               </button>
               <div class="accordion__panel">
                 <p class="accordion__article">
-                  Jump to execution instruction by address A3 if value in cell
-                  by address A1 greater than value in cell by address A2
+                  Jumps to the instruction at address A3 if the value in the
+                  cell at address A1 is greater than the value in the cell at
+                  address A2
                 </p>
 
                 <p class="accordion__article no-margin">
@@ -431,30 +489,30 @@
                 </p>
                 <ul class="accordion__list blue">
                   <li class="accordion__elem">
-                    Step 1: Read instruction at the address from the PC to IR
+                    Step 1: Read the instruction at the PC address into the IR
                   </li>
 
                   <li class="accordion__elem">
-                    Step 2: Increase PC by 1 (Prepare to execute the next
-                    instruction),
+                    Step 2: Increase the PC by 1 (prepare for the next
+                    instruction)
                   </li>
 
                   <li class="accordion__elem">
-                    Step 3: Number for the address A1 into AC
+                    Step 3: Load the value at address A1 into the AC
                   </li>
 
                   <li class="accordion__elem">
-                    Step 4: Write AC - number in cell for the address A2 into AC
+                    Step 4: Compare the AC with the value at address A2
                   </li>
 
                   <li class="accordion__elem">
-                    Step 5: (If condition is true) Condition complete, perform
-                    transition
+                    Step 5: (if the condition is true) Condition met — jump to
+                    the address in A3
                   </li>
 
                   <li class="accordion__elem">
-                    Step 5: (If condition is not true) Condition is not
-                    fulfilled, transition does not occur
+                    Step 5: (if the condition is false) Condition not met — no
+                    jump
                   </li>
                 </ul>
               </div>
@@ -464,8 +522,8 @@
               <button class="accordion__btn">(HALT) 111 HALT, OUTPUT</button>
               <div class="accordion__panel">
                 <p class="accordion__article">
-                  Stop the execution of commands. Output values in cells by
-                  addresses A1, A2, A3 on screen
+                  Stops execution and outputs the values in the cells at
+                  addresses A1, A2 and A3 on the Screen
                 </p>
 
                 <p class="accordion__article no-margin">
@@ -473,24 +531,24 @@
                 </p>
                 <ul class="accordion__list blue">
                   <li class="accordion__elem">
-                    Step 1: Read instruction at the address from the PC to IR
+                    Step 1: Read the instruction at the PC address into the IR
                   </li>
 
                   <li class="accordion__elem">
-                    Step 2: Increase PC by 1 (Prepare to execute the next
-                    instruction),
+                    Step 2: Increase the PC by 1 (prepare for the next
+                    instruction)
                   </li>
 
                   <li class="accordion__elem">
-                    Step 3: Output first number on screen
+                    Step 3: Output the first number to the screen
                   </li>
 
                   <li class="accordion__elem">
-                    Step 4: Output second number on screen
+                    Step 4: Output the second number to the screen
                   </li>
 
                   <li class="accordion__elem">
-                    Step 5: Output third number on screen
+                    Step 5: Output the third number to the screen
                   </li>
 
                   <li class="accordion__elem">Step 6: HALT</li>
@@ -505,7 +563,26 @@
             <p class="accordion__title">Program Example</p>
           </button>
           <div class="accordion__panel">
-            <p class="accordion__article">Soon...</p>
+            <p class="accordion__article">
+              The easiest way to see the machine in action: pick a program
+              from the Examples... dropdown and press A (Auto).
+            </p>
+
+            <p class="accordion__article">
+              For instance, "Add: 5 + 7" consists of two instructions and two
+              numbers. Cell 0000 holds 001 1000 1001 1010 — ADD: take the
+              value at address 1000 (which is 5), add the value at address
+              1001 (which is 7), and store the result at address 1010. Cell
+              0001 holds 111 1000 1001 1010 — HALT: stop and output the cells
+              at those three addresses. Run it and the Screen shows 5, 7
+              and 12.
+            </p>
+
+            <p class="accordion__article">
+              Try running it in Tact mode (T) to watch every clock cycle of
+              each instruction, or load the other examples to see jumps and
+              loops.
+            </p>
           </div>
         </div>
       </div>

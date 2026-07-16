@@ -1,5 +1,5 @@
-@import "./variables.scss";
-@import "./general.scss";
+@use "variables.scss";
+@use "general.scss";
 
 .instruction {
   &__title {
@@ -20,7 +20,7 @@
   &__btn {
     font-family: "Press Start 2P", monospace;
     background-color: #82828216;
-    color: $code;
+    color: variables.$code;
     cursor: pointer;
     width: 100%;
     text-align: left;
@@ -55,7 +55,7 @@
   content: "+";
   word-break: keep-all;
   font-size: 28px;
-  color: $code;
+  color: variables.$code;
   float: right;
   display: block;
   width: 30px;

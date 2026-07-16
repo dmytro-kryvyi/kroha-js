@@ -48,8 +48,8 @@ export default class LW {
 }
 
 const tacts = {
-  1: "Read instruction at the address from the PC to RC",
-  2: "Increase PC by 1 (Prepare to execute the next instruction)",
-  3: "Number for the address A1 into AC",
-  4: "Write from the AC into cell for address A3",
+  1: "Read the instruction at the PC address into the IR",
+  2: "Increase the PC by 1 (prepare for the next instruction)",
+  3: "Load the value at address A1 into the AC",
+  4: "Write the AC to the cell at address A3",
 };
