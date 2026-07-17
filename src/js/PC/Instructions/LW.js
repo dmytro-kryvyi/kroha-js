@@ -33,10 +33,11 @@ export default class LW {
       case 3:
         this.alu.initAC();
         break;
-      case 4:
+      case 4: {
         const cell = this.ram.getByAddr(this.alu.getIR().getA3Bin());
         cell.setValueBin(this.alu.getAC().getValueBin());
         return 0;
+      }
     }
 
     this.step++;

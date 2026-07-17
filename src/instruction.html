@@ -1,10 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KROHA.JS — Manual</title>
+    <link rel="stylesheet" href="./scss/instruction.scss" />
   </head>
   <body>
     <header class="header">
@@ -48,8 +49,8 @@
           </button>
           <div class="accordion__panel">
             <p class="accordion__article">
-              KROHA.JS is an emulator of a first-generation von Neumann
-              machine (computer) with a CISC architecture.
+              KROHA.JS is an emulator of a first-generation von Neumann machine
+              (computer) with a CISC architecture.
             </p>
 
             <p class="accordion__article no-margin">
@@ -79,8 +80,8 @@
               </li>
 
               <li class="accordion__elem">
-                Instruction - the instruction written in the cell the cursor
-                is in
+                Instruction - the instruction written in the cell the cursor is
+                in
               </li>
 
               <li class="accordion__elem">
@@ -91,8 +92,8 @@
             </ul>
 
             <p class="accordion__article-sub">
-              A reference panel with a short description of each instruction
-              and its code, the hotkeys, and the Program toolbar.
+              A reference panel with a short description of each instruction and
+              its code, the hotkeys, and the Program toolbar.
             </p>
 
             <p class="accordion__article-sub">
@@ -102,8 +103,7 @@
             </p>
 
             <p class="accordion__article-sub">
-              The Screen, where the HALT instruction outputs the selected
-              cells.
+              The Screen, where the HALT instruction outputs the selected cells.
             </p>
 
             <p class="accordion__article info-message">
@@ -120,8 +120,8 @@
           <div class="accordion__panel">
             <p class="accordion__article">
               Use the arrow keys to move the cursor through the memory cells.
-              The 0 and 1 keys write the corresponding bit; Backspace writes
-              a 0.
+              The 0 and 1 keys write the corresponding bit; Backspace writes a
+              0.
             </p>
 
             <p class="accordion__article">
@@ -147,8 +147,8 @@
               </li>
 
               <li class="accordion__elem">
-                Speed - how fast Auto mode executes; the rightmost position
-                runs instantly
+                Speed - how fast Auto mode executes; the rightmost position runs
+                instantly
               </li>
 
               <li class="accordion__elem">
@@ -176,12 +176,12 @@
             <p class="accordion__article">
               The computer works in 3 modes: automatic (Auto), step-by-step
               (Step) and clock-by-clock (Tact). In Auto mode the computer
-              executes instructions one after another until it reaches the
-              HALT instruction; the Speed slider sets the pace, and pressing
-              Auto again pauses and resumes execution. In Step mode the
-              computer executes one instruction at a time. In Tact mode each
-              instruction is executed clock by clock, and the information
-              window explains what is happening
+              executes instructions one after another until it reaches the HALT
+              instruction; the Speed slider sets the pace, and pressing Auto
+              again pauses and resumes execution. In Step mode the computer
+              executes one instruction at a time. In Tact mode each instruction
+              is executed clock by clock, and the information window explains
+              what is happening
             </p>
 
             <p class="accordion__article no-margin">
@@ -195,8 +195,8 @@
 
             <p class="accordion__article">
               Editing memory (with the 0, 1 or Backspace keys) or pressing E
-              switches the computer back to editor mode: the state is reset
-              and execution stops
+              switches the computer back to editor mode: the state is reset and
+              execution stops
             </p>
 
             <p class="accordion__article">
@@ -205,16 +205,16 @@
             </p>
 
             <p class="accordion__article info-message">
-              After a HALT message (or an error such as "ERROR Overflow",
-              "ERROR Division by zero" or "ERROR Infinite loop"), press any
-              run key (A, S, T) to reset the machine (ALU and screen).
-              Execution will not start — only the values are reset
+              After a HALT message (or an error such as "ERROR Overflow", "ERROR
+              Division by zero" or "ERROR Infinite loop"), press any run key (A,
+              S, T) to reset the machine (ALU and screen). Execution will not
+              start — only the values are reset
             </p>
 
             <p class="accordion__article info-message">
               Hotkeys work in any keyboard layout — on non-Latin layouts the
-              physical position of the A, S, T and E keys is used. Keys are
-              not case sensitive
+              physical position of the A, S, T and E keys is used. Keys are not
+              case sensitive
             </p>
           </div>
         </div>
@@ -229,7 +229,7 @@
             </p>
 
             <div class="accordion">
-              <button class="accordion__btn">(LW) &nbsp000 A1 ==> A3</button>
+              <button class="accordion__btn">(LW) &nbsp;000 A1 ==> A3</button>
               <div class="accordion__panel">
                 <p class="accordion__article">
                   Copies the value from the cell at address A1 to the cell at
@@ -350,13 +350,13 @@
               <div class="accordion__panel">
                 <p class="accordion__article">
                   Subtracts the value in the cell at address A2 from the value
-                  in the cell at address A1 and writes the result to the cell
-                  at address A3
+                  in the cell at address A1 and writes the result to the cell at
+                  address A3
                 </p>
 
                 <p class="accordion__title warning">
-                  Negative values are not supported: the result is the
-                  absolute value, the sign is discarded
+                  Negative values are not supported: the result is the absolute
+                  value, the sign is discarded
                 </p>
 
                 <p class="accordion__article no-margin">
@@ -435,9 +435,9 @@
               <button class="accordion__btn">(MUL) 101 A1 * A2 ==> A3</button>
               <div class="accordion__panel">
                 <p class="accordion__article">
-                  Multiplies the value in the cell at address A1 by the value
-                  in the cell at address A2 and writes the result to the cell
-                  at address A3
+                  Multiplies the value in the cell at address A1 by the value in
+                  the cell at address A2 and writes the result to the cell at
+                  address A3
                 </p>
 
                 <p class="accordion__title warning">
@@ -475,7 +475,7 @@
 
             <div class="accordion">
               <button class="accordion__btn">
-                (JG) &nbsp110 if A1 > A2 goto A3
+                (JG) &nbsp;110 if A1 > A2 goto A3
               </button>
               <div class="accordion__panel">
                 <p class="accordion__article">
@@ -564,28 +564,28 @@
           </button>
           <div class="accordion__panel">
             <p class="accordion__article">
-              The easiest way to see the machine in action: pick a program
-              from the Examples... dropdown and press A (Auto).
+              The easiest way to see the machine in action: pick a program from
+              the Examples... dropdown and press A (Auto).
             </p>
 
             <p class="accordion__article">
               For instance, "Add: 5 + 7" consists of two instructions and two
-              numbers. Cell 0000 holds 001 1000 1001 1010 — ADD: take the
-              value at address 1000 (which is 5), add the value at address
-              1001 (which is 7), and store the result at address 1010. Cell
-              0001 holds 111 1000 1001 1010 — HALT: stop and output the cells
-              at those three addresses. Run it and the Screen shows 5, 7
-              and 12.
+              numbers. Cell 0000 holds 001 1000 1001 1010 — ADD: take the value
+              at address 1000 (which is 5), add the value at address 1001 (which
+              is 7), and store the result at address 1010. Cell 0001 holds 111
+              1000 1001 1010 — HALT: stop and output the cells at those three
+              addresses. Run it and the Screen shows 5, 7 and 12.
             </p>
 
             <p class="accordion__article">
-              Try running it in Tact mode (T) to watch every clock cycle of
-              each instruction, or load the other examples to see jumps and
-              loops.
+              Try running it in Tact mode (T) to watch every clock cycle of each
+              instruction, or load the other examples to see jumps and loops.
             </p>
           </div>
         </div>
       </div>
     </section>
+    <script type="module" src="./js/instruction.js"></script>
+    <script type="module" src="./js/burger.js"></script>
   </body>
 </html>

@@ -11,7 +11,7 @@ export default class RAM {
     return this.instance;
   }
 
-  constructor(inputs) {
+  constructor() {
     this.initValues();
   }
 
@@ -25,7 +25,7 @@ export default class RAM {
       const address = i.toString(2).padStart(4, "0");
       const start = i * 15;
       const cell = new Cell(
-        Array.prototype.slice.apply(this.inputs).slice(start, start + 15)
+        Array.prototype.slice.apply(this.inputs).slice(start, start + 15),
       );
 
       this.ram.set(address, cell);

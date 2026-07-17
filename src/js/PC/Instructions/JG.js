@@ -34,7 +34,7 @@ export default class JG {
       case 3:
         this.alu.initAC();
         break;
-      case 4:
+      case 4: {
         const acVal = this.alu.getAC().getValueDec();
         const a2Val = this.ram
           .getByAddr(this.alu.getIR().getA2Bin())
@@ -42,6 +42,7 @@ export default class JG {
 
         this.condition = acVal > a2Val;
         break;
+      }
       case 5:
         if (this.condition) {
           this.alu.setPCBin(this.alu.getIR().getA3Bin());

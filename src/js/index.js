@@ -1,4 +1,3 @@
-import "../scss/style.scss";
 import Computer from "./PC/Computer";
 import PageBuilder from "./PC/pageBuilder";
 import Program from "./PC/Program";
@@ -131,7 +130,7 @@ document.querySelectorAll(".btn-share").forEach((btn) =>
     } catch {
       Info.getInstance().setStatusContent("Link is in the URL bar");
     }
-  })
+  }),
 );
 
 document.querySelectorAll(".btn-clear").forEach((btn) =>
@@ -140,7 +139,7 @@ document.querySelectorAll(".btn-clear").forEach((btn) =>
     Program.writeCells({});
     Program.save();
     control.setFocusVal(0, false);
-  })
+  }),
 );
 
 const speedSliders = document.querySelectorAll(".speed-slider");
@@ -151,7 +150,7 @@ const applySpeed = (value) => {
 };
 
 speedSliders.forEach((slider) =>
-  slider.addEventListener("input", () => applySpeed(slider.value))
+  slider.addEventListener("input", () => applySpeed(slider.value)),
 );
 applySpeed(speedSliders[0].value);
 
@@ -166,4 +165,3 @@ document
 document
   .querySelectorAll(".btn-tact")
   .forEach((btn) => btn.addEventListener("click", () => computer.tact()));
-

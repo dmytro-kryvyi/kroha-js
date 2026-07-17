@@ -7,8 +7,8 @@ description: Build and drive the KrohaJS emulator in headless Chrome to verify c
 
 ## Build & run
 
-- `npm run build` → static site in `dist/` (index.html + hashed js/css). No server needed: `file:///…/dist/index.html` works in Chrome.
-- `npm run serve` → dev server on port 4200 (add `--no-open` when headless).
+- `npm run build` → static site in `dist/` (index.html + hashed js/css). The build uses `<script type="module">`, which Chrome blocks over `file://` — serve it over http: `npx vite preview --port 4173 --strictPort`.
+- `npm run dev` → Vite dev server on port 4200 (`npm run serve` is the same but auto-opens a browser tab).
 
 ## Drive it (headless Chrome)
 
@@ -35,7 +35,7 @@ The whole app is keyboard-driven; puppeteer `page.keyboard.press(...)` exercises
 ## Gotchas
 
 - Viewports ≤ 810px wide switch to the mobile layout where the desktop `.info` panel (and its Auto/Step/Tact buttons) is `display: none` — set a ≥ 1280px viewport in puppeteer or clicks on `.btn-auto` fail as "not clickable".
-- All file:// pages share one localStorage; `localStorage.clear()` + reload for clean-state tests.
+- localStorage persists per origin across tests; `localStorage.clear()` + reload for clean-state tests.
 
 - Cells are 15-bit unsigned; max value 32767. ADD/MUL overflow and DIV by zero halt with an ERROR status.
 - A useful minimal program: row0 = op `0010 0011 0100` (c2, c3 → c4), row1 = HALT `111 0100 0100 0100`, then values in cells 2 and 3.

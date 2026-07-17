@@ -28,7 +28,7 @@ export default class PageBuilder {
       "beforeend",
       `<tr class="table__row" id="${"r" + num}">
         <td class="table__elem-adr">${addr}</td>
-      </tr>`
+      </tr>`,
     );
   }
 
@@ -45,7 +45,7 @@ export default class PageBuilder {
           maxlength="1"
           id="${"i" + (row * this.rowLen + column)}"
         />
-      </td>`
+      </td>`,
     );
   }
 }

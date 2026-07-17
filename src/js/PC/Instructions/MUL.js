@@ -35,7 +35,7 @@ export default class MUL {
       case 3:
         this.alu.initAC();
         break;
-      case 4:
+      case 4: {
         let newAC = this.alu.getAC().getValueDec();
         newAC *= this.ram.getByAddr(this.alu.getIR().getA2Bin()).getValueDec();
 
@@ -46,10 +46,12 @@ export default class MUL {
 
         this.alu.getAC().setValueDec(newAC);
         break;
-      case 5:
+      }
+      case 5: {
         const cell = this.ram.getByAddr(this.alu.getIR().getA3Bin());
         cell.setValueDec(this.alu.getAC().getValueDec());
         return 0;
+      }
     }
 
     this.step++;
